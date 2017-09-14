@@ -24,6 +24,9 @@ public class MessageHandler {
     public SendMessage handleIncomingMessage(Update update) {
         System.out.print("\n" + update.toString());
         if (messageIsValid(update)) {
+            if (update.getMessage().getText().equals(ButtonActions.Names.ORDER_BUTTON)){
+
+            }
             return createDefaultSendMessage(update);
         } else {
             return null;

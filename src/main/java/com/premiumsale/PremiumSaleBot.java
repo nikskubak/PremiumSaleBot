@@ -1,6 +1,7 @@
 package com.premiumsale;
 
 import com.premiumsale.commands.StartCommand;
+import com.premiumsale.commands.HelpCommand;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingCommandBot;
@@ -13,6 +14,8 @@ public class PremiumSaleBot extends TelegramLongPollingCommandBot {
 
     public PremiumSaleBot() {
         register(new StartCommand());
+        HelpCommand helpCommand = new HelpCommand(this);
+        register(helpCommand);
 //        HelpCommand helpCommand = new HelpCommand(this);
 //        register(helpCommand);
 
@@ -25,6 +28,7 @@ public class PremiumSaleBot extends TelegramLongPollingCommandBot {
             } catch (TelegramApiException e) {
                 BotLogger.error(LOGTAG, e);
             }
+            helpCommand.execute(absSender, message.getFrom(), message.getChat(), new String[] {});
         });
     }
 
