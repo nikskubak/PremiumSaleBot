@@ -1,0 +1,8 @@
+### IDE files
+.idea/
+out/
+copyright/
+*.iml
+.classpath
+.project
+.settings/
